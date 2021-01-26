@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SBATCH --time=02:00:00
+#SBATCH -N 1
+#SBATCH -c 8
+#SBATCH --mem=16GB
+#SBATCH -J ITSx plutof
+
+module load singularity/3.4.0
+
+# get working directory
+home_dir=$HOME
+
+cd "$home_dir/itsx_plutof/"
+
+./itsx_plutof.sif 11 --cpu 8 --save_regions all -t all -N 2 --complement True --preserve True --concat T --detailed_results T --partial 50
