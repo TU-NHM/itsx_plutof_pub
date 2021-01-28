@@ -2,9 +2,9 @@
 
 # create input and output data directories for massBLASTer
 echo "Creating input and output directories for ITSx ..."
-mkdir indata
-mkdir userdir
-mkdir outdata
+mkdir -p indata
+mkdir -p userdir
+mkdir -p outdata
 
 # Download itsx_plutof.sif
 echo "Downloading ITSx singularity container from https://plutof.ut.ee/#/filerepository/view/3576413 ...\n"
