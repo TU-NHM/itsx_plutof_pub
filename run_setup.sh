@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# create input and output data directories for massBLASTer
+# create input and output data directories for ITSx
 echo "Creating input and output directories for ITSx ..."
 mkdir -p indata
 mkdir -p userdir
