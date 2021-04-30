@@ -1,10 +1,8 @@
-# A base Ubuntu 18 Singularity container with basic Python packages
-
 BootStrap: library
-From: ubuntu:18.04
+From: ubuntu:20.04
 
 %help
-A base Ubuntu 18 Singularity container with basic Python packages such as HMMER3 and biopython
+A base Ubuntu 20 Singularity container with basic packages such as HMMER3
 
 %post
     # Need to add "universe" repo to be able to install hmmer
@@ -13,15 +11,16 @@ A base Ubuntu 18 Singularity container with basic Python packages such as HMMER3
 
     apt update
 
-    # HMMER - http://hmmer.org/
+    # HMMER 3.3 - http://hmmer.org/
     apt install -y hmmer
 
-    # wget and git
     apt install -y wget
 
     # Installing ITSx
-    wget https://microbiology.se/sw/ITSx_1.1.2.tar.gz
-    tar -xzvf ITSx_1.1.2.tar.gz
+    wget https://microbiology.se/sw/ITSx_1.1.3.tar.gz
+    tar -xzvf ITSx_1.1.3.tar.gz
+    # Rename to a generic name so that run scripts don't have to be updated if ITSx is updated
+    mv ITSx_1.1.3 ITSx
 
 %environment
     export LC_ALL=C
