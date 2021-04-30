@@ -61,7 +61,7 @@ cp "$pwd/indata/$infile" "$user_dir"
 
 # run ITSx
 cd "$user_dir"
-perl "/ITSx_1.1.2/ITSx" -i "$user_dir/$infile" "$itsx_args"
+perl "/ITSx/ITSx" -i "$user_dir/$infile" "$itsx_args"
 
 # archive and move to outfile_dir dir
 logfile="$user_dir/source_$run_id.log"
