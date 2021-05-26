@@ -15,27 +15,13 @@ fi
 # get run id
 run_id=$1
 
-# parse command line arguments (example: --cpu 8 --save_regions all --silent T -t all -N 2 --complement True --preserve True --concat T --detailed_results T --partial 50)
-options=$@
-arguments=($options)
-index=0
-itsx_args="-o itsx_out"
-for argument in $options
-  do
-    index=`expr $index + 1`
-    case $argument in
-      --cpu) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --save_regions)  itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --silent) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      -t) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      -N) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --complement) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --preserve) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --concat) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --detailed_results) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-      --partial) itsx_args="$itsx_args $argument ${arguments[index]}" ;;
-    esac
-  done
+# Push all the given arguments except for the first one (run_id) which needs special handling. Example:
+# --cpu 8 --save_regions all --silent T -t all -N 2 --complement True --preserve True --concat T --detailed_results T --partial 50
+itsx_args=""
+for argument in "${@:2}"
+    do
+        itsx_args="$itsx_args $argument"
+    done
 
 # get working directory
 pwd=$(pwd)
